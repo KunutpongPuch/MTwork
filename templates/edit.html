@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Edit page</title>
+	<head>
+	<body>
+		<h1>Edit</h1>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					<p>{{message}}</p>
+				{% endfor %}
+			{%endif%}
+		{%endwith%}
+
+		<form action="{{ url_for("update") }}" method="POST" autocomplete="off">
+			<input type="hidden" name="num" value="{{ num }}">
+		
+			<label for="name">please enter new name</label>
+			<input type="text" name="new_name" id="new_name" placeholder="{{ data.name[num] }}"><br><br>
+
+			<label for="lat">please enter new latitude</label>
+			<input type="number" name="new_lat" id="new_lat" placeholder="{{ data.latitude[num] }}"><br><br>
+
+			<label for="long">please enter new longitude</label>
+			<input type="number" name="new_long" id="new_long" placeholder="{{ data.longitude[num] }}"><br><br>
+
+			<input type="submit" value="submit">
+		</form>
+	</body>
+</html>
